@@ -27,12 +27,6 @@ types:
         body:
           application/json:
             type: NowPlayingInfo
-  patch:
-    is:  [RadioStation.Secured]
-    description: Apply a partial update to the now playing information.
-    body:
-      application/json:
-        type: NowPlayingInfo
   put:
     is:  [RadioStation.Secured]
     description: Update the now playing information.
