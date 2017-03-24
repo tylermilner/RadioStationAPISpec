@@ -4,9 +4,13 @@ version: v1
 baseUri: http://api.samplehost.com
 
 types:
-  DJ:
+  BaseObject:
     properties:
       id: string
+
+  DJ:
+    type: BaseObject
+    properties:
       handle: string
       firstName: string
       lastName: string
@@ -21,8 +25,8 @@ types:
       isActive: true
 
   Show:
+    type: BaseObject
     properties:
-      id: string
       name: string
       description: string
       djId: string #TODO: Replace with expanded DJ object?
