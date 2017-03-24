@@ -11,19 +11,27 @@ types:
 
 /config:
   get:
+    description: Fetch the current station configuration.
 /nowPlaying:
   get:
+    description: Fetch the current now playing information.
   patch:
+    description: Apply a partial update to the now playing information.
   put:
+    description: Update the now playing information.
 /shows:
   type:  { RadioStation.Collection: {item : Show} }
   get:
     is:  [RadioStation.FilterableByDayOfWeek, RadioStation.FilterableByIsActive]
+    description: Retrieve all of the station's shows.
   /{id}:
     type:  { RadioStation.Member: {item : Show} }
+    description: Retrieve the details for a specific show.
 /djs:
   type:  { RadioStation.Collection: {item : DJ} }
   get:
     is:  [RadioStation.FilterableByIsActive]
+    description: Retrieve all of the DJs associated with the station.
   /{id}:
     type:  { RadioStation.Member: {item : DJ} }
+    description: Retrieve the details for a specific station DJ.
