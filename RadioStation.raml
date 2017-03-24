@@ -42,6 +42,27 @@ types:
   BaseObject:
     properties:
       id: string
+  Config:
+    type: BaseObject
+    properties:
+      streams: array
+      stationWebsiteUrl: string
+    example:
+      id: "1"
+      streams: [{
+        name: "AAC+ high quality US",
+        extension: "aac+",
+        bitrate: 256,
+        url: "http://bassdrive.com/bassdrive3.m3u",
+        qualityScore: 100
+      }, {
+        name: "MP3 standard quality US",
+        extension: "mp3",
+        bitrate: 128,
+        url: "http://bassdrive.com/bassdrive.m3u",
+        qualityScore: 50
+      }]
+      stationWebsiteUrl: "http://bassdrive.com/"
   DJ:
     type: BaseObject
     properties:

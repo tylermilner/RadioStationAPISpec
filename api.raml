@@ -6,12 +6,18 @@ version: v1
 baseUri: http://api.samplehost.com
 
 types:
+  Config: RadioStation.Config
   DJ: RadioStation.DJ
   Show: RadioStation.Show
 
 /config:
   get:
     description: Fetch the current station configuration.
+    responses:
+      200:
+        body:
+          application/json:
+            type: Config
 /nowPlaying:
   get:
     description: Fetch the current now playing information.
