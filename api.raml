@@ -11,12 +11,14 @@ types:
       firstName: string
       lastName: string
       showId: string
+      isActive: boolean
     example:
       id: "1"
       handle: "Overfiend"
       firstName: "Louis"
       lastName: "Overfiend"
       showId: "1"
+      isActive: true
 
   Show:
     properties:
@@ -28,6 +30,7 @@ types:
       nextBroadcastTime: integer
       avatarUrl: string
       soundcloudUrl: string
+      isActive: boolean
     example:
       id: "5"
       name: "The Greenroom"
@@ -41,6 +44,7 @@ types:
       nextBroadcastTime: 1490814000
       avatarUrl: "http://bassdrive.com/img/radio_schedule_entries/image/original/stunnagreenroompromo1nufinalhalf-74.jpg"
       soundcloudUrl: "https://soundcloud.com/stunna"
+      isActive: true
 
 resourceTypes:
   Collection:
@@ -72,6 +76,9 @@ traits:
     queryParameters:
       dayOfWeek:
         enum: [mon, tues, wed, thurs, fri, sat, sun]
+  FilterableByIsActive:
+    queryParameters:
+      isActive: boolean
 
 /config:
   get:
@@ -82,10 +89,12 @@ traits:
 /shows:
   type:  { Collection: {item : Show} }
   get:
-    is:  [FilterableByDayOfWeek]
+    is:  [FilterableByDayOfWeek, FilterableByIsActive]
   /{id}:
     type:  { Member: {item : Show} }
 /djs:
   type:  { Collection: {item : DJ} }
+  get:
+    is:  [FilterableByIsActive]
   /{id}:
     type:  { Member: {item : DJ} }
