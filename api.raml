@@ -2,7 +2,6 @@
 title: Radio Station API
 version: v1
 baseUri: http://api.samplehost.com
-
 types:
   Show:
     properties:
@@ -25,30 +24,19 @@ types:
       nextBroadcastTime: 1490814000
       avatarUrl: "http://bassdrive.com/img/radio_schedule_entries/image/original/stunnagreenroompromo1nufinalhalf-74.jpg"
       soundcloudUrl: "https://soundcloud.com/stunna"
-
-/config:
-  get:
-
-/nowPlaying:
-  get:
-  patch:
-  put:
-
-/shows:
-  get:
-    responses:
-      200:
-        body:
-          application/json:
-            type: Show[]
-  post:
-    body:
-      application/json:
-        type: Show
-  /{id}:
-    delete:
+resourceTypes:
+  Collection:
+    get:
       responses:
-        204:
+        200:
+          body:
+            application/json:
+              type: Show[]
+    post:
+      body:
+        application/json:
+          type: Show
+  Member:
     put:
       body:
         application/json:
@@ -57,7 +45,20 @@ types:
       body:
         application/json:
           type: Show
+    delete:
+      responses:
+        204:
 
+/config:
+  get:
+/nowPlaying:
+  get:
+  patch:
+  put:
+/shows:
+  type: Collection
+  /{id}:
+    type: Member
 /djs:
   get:
     responses:
