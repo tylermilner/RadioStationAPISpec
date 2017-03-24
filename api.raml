@@ -67,6 +67,12 @@ resourceTypes:
       responses:
         204:
 
+traits:
+  FilterableByDayOfWeek:
+    queryParameters:
+      dayOfWeek:
+        enum: [mon, tues, wed, thurs, fri, sat, sun]
+
 /config:
   get:
 /nowPlaying:
@@ -76,9 +82,7 @@ resourceTypes:
 /shows:
   type:  { Collection: {item : Show} }
   get:
-    queryParameters:
-      dayOfWeek:
-        enum: [mon, tues, wed, thurs, fri, sat, sun]
+    is:  [FilterableByDayOfWeek]
   /{id}:
     type:  { Member: {item : Show} }
 /djs:
