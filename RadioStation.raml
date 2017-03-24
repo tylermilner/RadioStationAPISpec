@@ -21,19 +21,27 @@ traits:
         example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzY290Y2guaW8iLCJleHAiOjEzMDA4MTkzODAsIm5hbWUiOiJDaHJpcyBTZXZpbGxlamEiLCJhZG1pbiI6dHJ1ZX0.03f329983b86f7d9a9f5fef85305880101d5e302afafa20154d094b229f75773
 resourceTypes:
   Collection:
+    description: Collection of <<item>> in the station.
     get:
+      description: Get a list of <<item>>s.
       responses:
         200:
           body:
             application/json:
               type: <<item>>[]
     post:
+      description: |
+        Add a new <<item|!singularize>> to the station.
       is:  [Secured]
       body:
         application/json:
           type: <<item>>
   Member:
+    description: Entity representing a <<item|!singularize>> that is modifiable.
     get:
+      description: |
+        Get the <<item|!singularize>>
+        with <<item|!singularize>>Id = {id}.
       responses:
         200:
           body:
@@ -41,11 +49,17 @@ resourceTypes:
               type: <<item>>
     put:
       is:  [Secured]
+      description: |
+        Edit the <<item|!singularize>>
+        with <<item|!singularize>>Id = {id}.
       body:
         application/json:
           type: <<item>>
     delete:
       is:  [Secured]
+      description: |
+        Delete the <<item|!singularize>>
+        with <<item|!singularize>>Id = {id}.
       responses:
         204:
 types:

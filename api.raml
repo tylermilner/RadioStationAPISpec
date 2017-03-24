@@ -12,6 +12,7 @@ types:
   Show: RadioStation.Show
 
 /config:
+  description: Station configuration.
   get:
     description: Fetch the current station configuration.
     responses:
@@ -20,6 +21,7 @@ types:
           application/json:
             type: Config
 /nowPlaying:
+  description: Now playing information.
   get:
     description: Fetch the current now playing information.
     responses:
@@ -35,17 +37,17 @@ types:
         type: NowPlayingInfo
 /shows:
   type:  { RadioStation.Collection: {item : Show} }
+  description: Retrieve/edit all of the station's shows.
   get:
     is:  [RadioStation.FilterableByDayOfWeek, RadioStation.FilterableByIsActive]
-    description: Retrieve all of the station's shows.
   /{id}:
-    description: Retrieve the details for a specific show.
     type:  { RadioStation.Member: {item : Show} }
+    description: Retrieve/edit the details for a specific show.
 /djs:
   type:  { RadioStation.Collection: {item : DJ} }
+  description: Retrieve/edit DJs associated with the station.
   get:
     is:  [RadioStation.FilterableByIsActive]
-    description: Retrieve all of the DJs associated with the station.
   /{id}:
-    description: Retrieve the details for a specific station DJ.
     type:  { RadioStation.Member: {item : DJ} }
+    description: Retrieve/edit the details for a specific station DJ.
