@@ -7,6 +7,7 @@ baseUri: http://api.samplehost.com
 
 types:
   Config: RadioStation.Config
+  NowPlayingInfo: RadioStation.NowPlayingInfo
   DJ: RadioStation.DJ
   Show: RadioStation.Show
 
@@ -21,23 +22,34 @@ types:
 /nowPlaying:
   get:
     description: Fetch the current now playing information.
+    responses:
+      200:
+        body:
+          application/json:
+            type: NowPlayingInfo
   patch:
     description: Apply a partial update to the now playing information.
+    body:
+      application/json:
+        type: NowPlayingInfo
   put:
     description: Update the now playing information.
+    body:
+      application/json:
+        type: NowPlayingInfo
 /shows:
   type:  { RadioStation.Collection: {item : Show} }
   get:
-    is:  [RadioStation.FilterableByDayOfWeek, RadioStation.FilterableByIsActive]
     description: Retrieve all of the station's shows.
+    is:  [RadioStation.FilterableByDayOfWeek, RadioStation.FilterableByIsActive]
   /{id}:
-    type:  { RadioStation.Member: {item : Show} }
     description: Retrieve the details for a specific show.
+    type:  { RadioStation.Member: {item : Show} }
 /djs:
   type:  { RadioStation.Collection: {item : DJ} }
   get:
-    is:  [RadioStation.FilterableByIsActive]
     description: Retrieve all of the DJs associated with the station.
+    is:  [RadioStation.FilterableByIsActive]
   /{id}:
-    type:  { RadioStation.Member: {item : DJ} }
     description: Retrieve the details for a specific station DJ.
+    type:  { RadioStation.Member: {item : DJ} }

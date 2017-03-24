@@ -63,6 +63,23 @@ types:
         qualityScore: 50
       }]
       stationWebsiteUrl: "http://bassdrive.com/"
+  NowPlayingInfo:
+    type: BaseObject
+    properties:
+      djName: string
+      showName: string
+      trackTitle:
+        type: string
+        required: false
+      trackArtist:
+        type: string
+        required: false
+    example:
+      id: "1"
+      djName: "Stunna"
+      showName: "The Greenroom"
+      trackTitle: "Can't Stop"
+      trackArtist: "Command Strange"
   DJ:
     type: BaseObject
     properties:
