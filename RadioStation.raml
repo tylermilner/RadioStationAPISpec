@@ -19,6 +19,9 @@ traits:
       Authorization:
         description: Authorization bearer header must contain the user session token.
         example: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzY290Y2guaW8iLCJleHAiOjEzMDA4MTkzODAsIm5hbWUiOiJDaHJpcyBTZXZpbGxlamEiLCJhZG1pbiI6dHJ1ZX0.03f329983b86f7d9a9f5fef85305880101d5e302afafa20154d094b229f75773
+    responses:
+      401:
+        description: A 401 Unauthorized response indicates that the user session token is not valid. A new token should be obtained by logging in again.
 resourceTypes:
   Collection:
     description: Collection of <<item>> in the station.
@@ -87,6 +90,11 @@ types:
         qualityScore: 50
       }]
       stationWebsiteUrl: "http://bassdrive.com/"
+  AuthenticationResponse:
+    properties:
+      token: string
+    example:
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzY290Y2guaW8iLCJleHAiOjEzMDA4MTkzODAsIm5hbWUiOiJDaHJpcyBTZXZpbGxlamEiLCJhZG1pbiI6dHJ1ZX0.03f329983b86f7d9a9f5fef85305880101d5e302afafa20154d094b229f75773
   NowPlayingInfo:
     type: BaseObject
     properties:

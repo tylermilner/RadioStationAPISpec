@@ -7,6 +7,7 @@ baseUri: http://api.samplehost.com
 
 types:
   Config: RadioStation.Config
+  AuthenticationResponse: RadioStation.AuthenticationResponse
   NowPlayingInfo: RadioStation.NowPlayingInfo
   DJ: RadioStation.DJ
   Show: RadioStation.Show
@@ -20,6 +21,25 @@ types:
         body:
           application/json:
             type: Config
+/login:
+  description: Authenticate with the station. Used by DJs or admins that have been manually registered with the station.
+  post:
+    description: Login to the station using username/password credentials to obtain a session token.
+    body:
+      application/x-www-form-urlencoded:
+        properties:
+          email: string
+          password: string
+        example:
+          email: "dj1@stationdomain.com"
+          password: "abc123"
+    responses:
+      200:
+        body:
+          application/json:
+            type: AuthenticationResponse
+      401:
+        description: 401 Unauthorized response indicates that the credentials were not valid.
 /nowPlaying:
   description: Now playing information.
   get:
