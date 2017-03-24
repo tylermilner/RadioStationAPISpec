@@ -75,6 +75,10 @@ resourceTypes:
   put:
 /shows:
   type:  { Collection: {item : Show} }
+  get:
+    queryParameters:
+      dayOfWeek:
+        enum: [mon, tues, wed, thurs, fri, sat, sun]
   /{id}:
     type:  { Member: {item : Show} }
 /djs:
