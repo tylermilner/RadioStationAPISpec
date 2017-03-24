@@ -2,23 +2,15 @@
 title: Radio Station API
 version: v1
 baseUri: http://api.samplehost.com
-types:
-  TestType:
-    type: object
-    properties:
-      id: number
-      optional?: string
-      expanded:
-        type: object
-        properties:
-          count: number
-/helloWorld:
+
+/config:
   get:
-    responses:
-      200:
-        body:
-          application/json:
-            example: |
-              {
-                "message" : "Hello World"
-              }
+
+/nowPlaying:
+  get:
+  patch:
+  put:
+
+/shows:
+  get:
+  post:
