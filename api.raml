@@ -15,12 +15,29 @@ baseUri: http://api.samplehost.com
 
 /shows:
   get:
+    responses:
+      200:
+        body:
+          application/json:
+
   post:
+    body:
+      application/json:
 
   /{id}:
     get:
+      responses:
+        200:
+          body:
+            application/json:
+
     put:
+      body:
+        application/json:
+
     delete:
+      responses:
+        204:
 
 /djs:
   get:
