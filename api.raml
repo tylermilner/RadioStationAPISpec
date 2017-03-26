@@ -23,6 +23,36 @@ baseUri: http://api.samplehost.com
   post:
     body:
       application/json:
+        type: object
+        properties:
+          name: string
+          description: string
+          djId: string
+          broadcastInfo:
+            type: object
+            properties:
+              location: string
+              dayOfWeek: string
+              startTime: string
+              endTime: string
+          nextBroadcastTime: integer
+          avatarUrl: string
+          soundcloudUrl: string
+        example: |
+          {
+            "name": "The Greenroom",
+            "description": "A classically trained keyboardist and working musician based in Chicago, STUNNA (aka J. Cappo) has crafted his own unique sound within the fast paced world of Drum + Bass music",
+            "djId": "2",
+            "broadcastInfo": {
+                "location": "Chicago, IL, USA",
+                "dayOfWeek": "Wednesday",
+                "startTime": "14:00",
+                "endTime": "17:00"
+              },
+            "nextBroadcastTime": 1490814000,
+            "avatarUrl": "http://bassdrive.com/img/radio_schedule_entries/image/original/stunnagreenroompromo1nufinalhalf-74.jpg",
+            "soundcloudUrl": "https://soundcloud.com/stunna"
+          }
 
   /{id}:
     get:
