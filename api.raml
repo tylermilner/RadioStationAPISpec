@@ -3,6 +3,23 @@ title: Radio Station
 version: v1
 baseUri: http://api.samplehost.com
 
+types:
+  Show:
+    properties:
+      name: string
+      description: string
+      djId: string
+      broadcastInfo:
+        type: object
+        properties:
+          location: string
+          dayOfWeek: string
+          startTime: string
+          endTime: string
+      nextBroadcastTime: integer
+      avatarUrl: string
+      soundcloudUrl: string
+
 /config:
   get:
 
@@ -23,21 +40,7 @@ baseUri: http://api.samplehost.com
   post:
     body:
       application/json:
-        type: object
-        properties:
-          name: string
-          description: string
-          djId: string
-          broadcastInfo:
-            type: object
-            properties:
-              location: string
-              dayOfWeek: string
-              startTime: string
-              endTime: string
-          nextBroadcastTime: integer
-          avatarUrl: string
-          soundcloudUrl: string
+        type: Show
         example: |
           {
             "name": "The Greenroom",
