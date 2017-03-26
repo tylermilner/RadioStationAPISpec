@@ -1,24 +1,4 @@
 #%RAML 1.0
-title: Radio Station API
+title: Radio Station
 version: v1
 baseUri: http://api.samplehost.com
-types:
-  TestType:
-    type: object
-    properties:
-      id: number
-      optional?: string
-      expanded:
-        type: object
-        properties:
-          count: number
-/helloWorld:
-  get:
-    responses:
-      200:
-        body:
-          application/json:
-            example: |
-              {
-                "message" : "Hello World"
-              }
