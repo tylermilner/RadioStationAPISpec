@@ -39,11 +39,11 @@ resourceTypes:
         200:
           body:
             application/json:
-              type: Show[]
+              type: <<item>>[]
     post:
       body:
         application/json:
-          type: Show
+          type: <<item>>
 
   Member:
     get:
@@ -51,11 +51,11 @@ resourceTypes:
         200:
           body:
             application/json:
-              type: Show
+              type: <<item>>
     put:
       body:
         application/json:
-          type: Show
+          type: <<item>>
     delete:
       responses:
         204:
@@ -71,10 +71,10 @@ resourceTypes:
   put:
 
 /shows:
-  type: Collection
+  type: { Collection: { item : Show } }
 
   /{id}:
-    type: Member
+    type: { Member: { item : Show } }
 
 /djs:
   get:
