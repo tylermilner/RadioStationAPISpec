@@ -32,6 +32,34 @@ types:
       avatarUrl: "http://bassdrive.com/img/radio_schedule_entries/image/original/stunnagreenroompromo1nufinalhalf-74.jpg"
       soundcloudUrl: "https://soundcloud.com/stunna"
 
+resourceTypes:
+  Collection:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: Show[]
+    post:
+      body:
+        application/json:
+          type: Show
+
+  Member:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: Show
+    put:
+      body:
+        application/json:
+          type: Show
+    delete:
+      responses:
+        204:
+
 /config:
   get:
 
@@ -43,34 +71,10 @@ types:
   put:
 
 /shows:
-  get:
-    responses:
-      200:
-        body:
-          application/json:
-            type: Show[]
-
-  post:
-    body:
-      application/json:
-        type: Show
+  type: Collection
 
   /{id}:
-    get:
-      responses:
-        200:
-          body:
-            application/json:
-              type: Show
-
-    put:
-      body:
-        application/json:
-          type: Show
-
-    delete:
-      responses:
-        204:
+    type: Member
 
 /djs:
   get:
