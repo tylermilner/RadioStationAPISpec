@@ -48,6 +48,7 @@ types:
       200:
         body:
           application/json:
+            type: Show[]
 
   post:
     body:
@@ -60,10 +61,12 @@ types:
         200:
           body:
             application/json:
+              type: Show
 
     put:
       body:
         application/json:
+          type: Show
 
     delete:
       responses:
