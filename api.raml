@@ -45,6 +45,16 @@ types:
       lastName: "Overfiend"
       showId: "1"
 
+traits:
+  Secured:
+    headers:
+      Authorization:
+        description: Authorization bearer header must contain the user session token.
+        example: Bearer aaaa.bbbb.cccc
+    responses:
+      401:
+        description: Indicates that the user session token is no longer valid. A new token should be obtained by logging in again.
+
 resourceTypes:
   Collection:
     get:
@@ -54,6 +64,7 @@ resourceTypes:
             application/json:
               type: <<item>>[]
     post:
+      is: [Secured]
       body:
         application/json:
           type: <<item>>
@@ -66,10 +77,12 @@ resourceTypes:
             application/json:
               type: <<item>>
     put:
+      is: [Secured]
       body:
         application/json:
           type: <<item>>
     delete:
+      is: [Secured]
       responses:
         204:
 
