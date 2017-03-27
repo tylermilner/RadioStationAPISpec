@@ -31,6 +31,19 @@ types:
       nextBroadcastTime: 1490814000
       avatarUrl: "http://bassdrive.com/img/radio_schedule_entries/image/original/stunnagreenroompromo1nufinalhalf-74.jpg"
       soundcloudUrl: "https://soundcloud.com/stunna"
+  DJ:
+    properties:
+      id: string
+      handle: string
+      firstName: string
+      lastName: string
+      showId: string
+    example:
+      id: "1"
+      handle: "Overfiend"
+      firstName: "Louis"
+      lastName: "Overfiend"
+      showId: "1"
 
 resourceTypes:
   Collection:
@@ -77,10 +90,7 @@ resourceTypes:
     type: { Member: { item : Show } }
 
 /djs:
-  get:
-  post:
+  type: { Collection: { item : DJ } }
 
   /{id}:
-    get:
-    put:
-    delete:
+    type: { Member: { item : DJ } }
